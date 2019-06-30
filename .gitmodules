@@ -1,3 +1,0 @@
-[submodule "plugins/tmux_config"]
-	path = plugins/tmux_config
-	url = git@github.com:btrvarun/tmux_config.git

@@ -1,0 +1,3 @@
+# ignore all plugins except tpm
+plugins/tmux-sensible/
+plugins/tmux-yank/
