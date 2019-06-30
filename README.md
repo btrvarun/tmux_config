@@ -6,7 +6,7 @@ My tmux configuration
 Start by cloning this repo to your linux machine and installing tmux
 
 ```bash
-git clone --recurse-submodule https://github.com/btrvarun/tmux_config ~/.tmux/
+git clone --recurse-submodule https://github.com/btrvarun/tmux_config.git ~/.tmux/
 
 # debian:
 sudo apt install tmux
