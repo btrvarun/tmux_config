@@ -39,6 +39,6 @@ exec bash
 
 Tmux is open, Install the plugins by pressing: 
 
-Ctrl+a I
+Ctrl+a I (capital i)
 
 Your tmux is ready to go! Now follow my vim configuration instructions!
