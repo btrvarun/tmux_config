@@ -10,10 +10,10 @@ git clone --recurse-submodule https://github.com/btrvarun/tmux_config.git ~/.tmu
 ln -s ~/.tmux/.tmux.conf ~/.tmux.conf
 
 # debian:
-sudo apt install tmux
+sudo apt install tmux powerline fonts-powerline
 
 #arch-linux:
-sudo pacman -S tmux
+sudo pacman -S tmux powerline powerline-fonts
 ```
 
 ### Configuration
