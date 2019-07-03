@@ -42,7 +42,15 @@ exec bash
 ```
 
 Tmux is open, Install the plugins by pressing: 
-
+```
 Ctrl+a I (capital i)
+```
 
-Your tmux is ready to go! Now follow my vim configuration instructions!
+Now link your alacritty configuration after installing alacritty:
+```bash
+sudo pacman -S alacritty
+rm ~/.config/alacritty/alacritty.yaml	
+ls -s ~/.tmux/alacritty.yaml ~/.config/alacritty/alacritty.yaml
+```
+
+Your configuration is ready to go!
