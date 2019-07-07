@@ -28,6 +28,8 @@ curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
 
 now add the following lines into your ~/.bashrc file
 ```
+export TERM="screen-256color"
+
 # TMUX scripting
 if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
   exec tmux
