@@ -39,7 +39,7 @@ let g:ivim_user='Xiao-Ou Zhang' " User name
 let g:ivim_email='kepbod@gmail.com' " User email
 let g:ivim_github='https://github.com/kepbod' " User github
 " ivim color settings (hybrid, gruvbox or tender)
-let g:ivim_default_scheme='gruvbox'
+let g:ivim_default_scheme='hybrid'
 " ivim ui setting
 let g:ivim_fancy_font=1 " Enable using fancy font
 let g:ivim_show_number=1 " Enable showing number
