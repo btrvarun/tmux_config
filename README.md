@@ -18,6 +18,9 @@ sudo apt install tmux vim
 
 #arch-linux:
 sudo pacman -S tmux vim
+
+curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 ```
 
 ### Configuration
