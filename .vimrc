@@ -1,5 +1,3 @@
-set mouse=a " Set mouse mode on
-
 "       _       _
 "      (_)   __(_)___ ___
 "     / / | / / / __ `__ \
@@ -39,7 +37,7 @@ let g:ivim_user='Xiao-Ou Zhang' " User name
 let g:ivim_email='kepbod@gmail.com' " User email
 let g:ivim_github='https://github.com/kepbod' " User github
 " ivim color settings (hybrid, gruvbox or tender)
-let g:ivim_default_scheme='hybrid'
+let g:ivim_default_scheme='gruvbox'
 " ivim ui setting
 let g:ivim_fancy_font=1 " Enable using fancy font
 let g:ivim_show_number=1 " Enable showing number
@@ -166,7 +164,6 @@ if count(g:ivim_bundle_groups, 'enhance') " Vim enhancement
     Plug 'mbbill/undotree', { 'on': 'UndotreeToggle' } " Undo tree
     Plug 'tpope/vim-surround' " Surround
     Plug 'junegunn/vim-easy-align', { 'on': ['<Plug>(EasyAlign)', 'EasyAlign'] } " Easy align
-    Plug 'ludovicchabant/vim-gutentags' " Manage tag files
     Plug 'AndrewRadev/splitjoin.vim' " Splitjoin
     Plug 'sickill/vim-pasta' " Vim pasta
     Plug 'Keithbsmiley/investigate.vim' " Helper
@@ -624,9 +621,6 @@ if count(g:ivim_bundle_groups, 'enhance')
     xmap ga <Plug>(EasyAlign)
     nmap ga <Plug>(EasyAlign)
 
-    " -> Gutentags
-    let g:gutentags_cache_dir=$HOME . '/.vim/cache/ctags'
-
     " -> Splitjoin
     let g:splitjoin_split_mapping = ',s'
     let g:splitjoin_join_mapping  = ',j'
@@ -840,4 +834,10 @@ if has('gui_running')
 endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Custom Setting
+"---------------------------------------------------------------
+
+set mouse=a " Set mouse mode on
+set clipboard=unnamedplus " Syncing clipboard
+set pastetoggle=<leader>p " Toggle paste mode
 
