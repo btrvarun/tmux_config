@@ -33,8 +33,8 @@
 "------------------------------------------------
 
 " ivim user setting
-let g:ivim_user='Xiao-Ou Zhang' " User name
-let g:ivim_email='kepbod@gmail.com' " User email
+let g:ivim_user='Varun' " User name
+let g:ivim_email='btr.varun93@gmail.com' " User email
 let g:ivim_github='https://github.com/kepbod' " User github
 " ivim color settings (hybrid, gruvbox or tender)
 let g:ivim_default_scheme='gruvbox'
@@ -412,9 +412,9 @@ endif
 " Set GUI font
 if has('gui_running')
     if has('gui_gtk')
-        set guifont=DejaVu\ Sans\ Mono\ 18
+        set guifont=DejaVu\ Sans\ Mono\ 12
     else
-        set guifont=DejaVu\ Sans\ Mono:h18
+        set guifont=DejaVu\ Sans\ Mono:h12
     endif
 endif
 
