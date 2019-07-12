@@ -35,17 +35,13 @@
 " ivim user setting
 let g:ivim_user='Varun' " User name
 let g:ivim_email='btr.varun93@gmail.com' " User email
-let g:ivim_github='https://github.com/kepbod' " User github
-" ivim color settings (hybrid, gruvbox or tender)
-let g:ivim_default_scheme='gruvbox'
 " ivim ui setting
-let g:ivim_fancy_font=1 " Enable using fancy font
 let g:ivim_show_number=1 " Enable showing number
 " ivim autocomplete setting (YCM or NEO)
 let g:ivim_autocomplete='NEO'
 " ivim plugin setting
 let g:ivim_bundle_groups=['ui', 'enhance', 'move', 'navigate',
-            \'complete', 'compile', 'git', 'language']
+            \'complete', 'compile', 'language']
 
 " Customise ivim settings for personal usage
 if filereadable(expand($HOME . '/.vimrc.ivim.local'))
@@ -141,12 +137,8 @@ endif
 call plug#begin('~/.vim/bundle')
 
 if count(g:ivim_bundle_groups, 'ui') " UI setting
-    Plug 'kristijanhusak/vim-hybrid-material' " Colorscheme hybrid material
     Plug 'morhetz/gruvbox' " Colorscheme gruvbox
-    Plug 'jacoborus/tender.vim' " Colorscheme tender
-    Plug 'vim-airline/vim-airline' | Plug 'vim-airline/vim-airline-themes' " Status line
     Plug 'Yggdroot/indentLine' " Indentation level
-    Plug 'ryanoasis/vim-devicons' " Devicons
     Plug 'bling/vim-bufferline' " Buffer line
     Plug 'mhinz/vim-startify' " Start page
     Plug 'junegunn/goyo.vim', { 'for': 'markdown' } " Distraction-free
@@ -186,7 +178,6 @@ endif
 
 if count(g:ivim_bundle_groups, 'navigate') " Navigation
     Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' } " NERD tree
-    Plug 'Xuyuanp/nerdtree-git-plugin', { 'on': 'NERDTreeToggle' } " NERD tree git plugin
     Plug 'mhinz/vim-tmuxify' " Tmux panes
     Plug 'gmarik/Vundle.vim' " Vundle
     Plug 'christoomey/vim-tmux-navigator' " Make navigation between tmux and vim easier
@@ -219,14 +210,6 @@ if count(g:ivim_bundle_groups, 'compile') " Compiling
     Plug 'xuhdev/SingleCompile' " Single compile
 endif
 
-if count(g:ivim_bundle_groups, 'git') " Git
-    Plug 'tpope/vim-fugitive' " Git wrapper
-    Plug 'junegunn/gv.vim' " Gitk clone
-    if has('signs')
-        Plug 'airblade/vim-gitgutter' " Git diff sign
-    endif
-endif
-
 if count(g:ivim_bundle_groups, 'language') " Language Specificity
     Plug 'davidhalter/jedi-vim', { 'for': 'python' } " Python jedi plugin
     Plug 'fatih/vim-go', { 'for': 'go' } " Golang
@@ -248,85 +231,8 @@ call plug#end()
 " => User Interface
 "-------------------------------------------------
 
-if count(g:ivim_bundle_groups, 'ui')
-    let g:airline#extensions#tabline#enabled=1
-else
-    " Set title
-    set title
-    set titlestring=%t%(\ %m%)%(\ (%{expand('%:p:h')})%)%(\ %a%)
-
-    " Set tabline
-    set showtabline=2 " Always show tab line
-    " Set up tab labels
-    set guitablabel=%m%N:%t[%{tabpagewinnr(v:lnum)}]
-    set tabline=%!MyTabLine()
-    function! MyTabLine()
-        let s=''
-        let t=tabpagenr() " The index of current page
-        let i=1
-        while i<=tabpagenr('$') " From the first page
-            let buflist=tabpagebuflist(i)
-            let winnr=tabpagewinnr(i)
-            let s.=(i==t ? '%#TabLineSel#' : '%#TabLine#')
-            let s.='%'.i.'T'
-            let s.=' '
-            let bufnr=buflist[winnr-1]
-            let file=bufname(bufnr)
-            let buftype = getbufvar(bufnr, 'buftype')
-            let m=''
-            if getbufvar(bufnr, '&modified')
-                let m='[+]'
-            endif
-            if buftype=='nofile'
-                if file=~'\/.'
-                    let file=substitute(file, '.*\/\ze.', '', '')
-                endif
-            else
-                let file=fnamemodify(file, ':p:t')
-            endif
-            if file==''
-                let file='[No Name]'
-            endif
-            let s.=m
-            let s.=i.':'
-            let s.=file
-            let s.='['.winnr.']'
-            let s.=' '
-            let i=i+1
-        endwhile
-        let s.='%T%#TabLineFill#%='
-        let s.=(tabpagenr('$')>1 ? '%999XX' : 'X')
-        return s
-    endfunction
-    " Set tabline colorscheme
-    if g:ivim_default_scheme=='gruvbox'
-        let g:gruvbox_invert_tabline=1
-    endif
-    " Set up tab tooltips with each buffer name
-    set guitabtooltip=%F
-endif
-
-" Set status line
-if count(g:ivim_bundle_groups, 'ui')
-    set laststatus=2 " Show the statusline
-    set noshowmode " Hide the default mode text
-    " Set status line colorscheme
-    if g:ivim_default_scheme=='hybrid'
-        let g:airline_theme='bubblegum'
-    elseif g:ivim_default_scheme=='tender'
-        let g:tender_airline=1
-        let g:airline_theme='tender'
-    endif
-    set ttimeoutlen=50
-    let g:bufferline_echo=0
-    let g:bufferline_modified='[+]'
-    if g:ivim_fancy_font
-        let g:airline_powerline_fonts=1
-    else
-        let g:airline_left_sep=''
-        let g:airline_right_sep=''
-    endif
-endif
+" Set tabline colorscheme
+let g:gruvbox_invert_tabline=1
 
 " Only have cursorline in current window and in normal window
 autocmd WinLeave * set nocursorline
@@ -350,7 +256,7 @@ set showmatch " Show matching brackets/parenthesis
 set matchtime=2 " Decrease the time to blink
 
 if g:ivim_show_number
-    set number " Show line numbers
+    set number relativenumber" Show line numbers
     " Toggle relativenumber
     nnoremap <Leader>n :set relativenumber!<CR>
 endif
@@ -358,24 +264,6 @@ endif
 set formatoptions+=rnlmM " Optimize format options
 set wrap " Set wrap
 set textwidth=80 " Change text width
-if g:ivim_fancy_font
-    set list " Show these tabs and spaces and so on
-    set listchars=tab:▸\ ,eol:¬,extends:❯,precedes:❮ " Change listchars
-    set linebreak " Wrap long lines at a blank
-    set showbreak=↪  " Change wrap line break
-    set fillchars=diff:⣿,vert:│ " Change fillchars
-    augroup trailing " Only show trailing whitespace when not in insert mode
-        autocmd!
-        autocmd InsertEnter * :set listchars-=trail:⌴
-        autocmd InsertLeave * :set listchars+=trail:⌴
-    augroup END
-endif
-
-" Set gVim UI setting
-if has('gui_running')
-    set guioptions-=m
-    set guioptions-=T
-endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -385,38 +273,9 @@ endif
 
 syntax on " Enable syntax
 set background=dark " Set background
-if !has('gui_running')
-    set t_Co=256 " Use 256 colors
-endif
-
-" Use true colors
-if (empty($TMUX))
-    if (has("termguicolors"))
-        set termguicolors
-    endif
-endif
 
 " Load a colorscheme
-if count(g:ivim_bundle_groups, 'ui')
-    if g:ivim_default_scheme=='hybrid'
-        colorscheme hybrid_reverse
-    elseif g:ivim_default_scheme=='gruvbox'
-        colorscheme gruvbox
-    elseif g:ivim_default_scheme=='tender'
-        colorscheme tender
-    endif
-else
-    colorscheme desert
-endif
-
-" Set GUI font
-if has('gui_running')
-    if has('gui_gtk')
-        set guifont=DejaVu\ Sans\ Mono\ 12
-    else
-        set guifont=DejaVu\ Sans\ Mono:h12
-    endif
-endif
+colorscheme gruvbox
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -534,41 +393,6 @@ command! DiffOrig vert new | set bt=nofile | r ++edit # | 0d_
 " => Plugin Setting
 "--------------------------------------------------
 
-" Setting for UI plugins
-if count(g:ivim_bundle_groups, 'ui')
-
-    " -> Startify
-    let g:startify_session_dir=$HOME . '/.vim/session'
-    let g:startify_custom_header=[
-                \'       _       _         ',
-                \'      (_)   __(_)___ ___ ',
-                \'     / / | / / / __ `__ \',
-                \'    / /| |/ / / / / / / /',
-                \'   /_/ |___/_/_/ /_/ /_/ ',
-                \'                         ']
-    let g:startify_custom_footer=['', '    This configuration is maintained by Xiao-Ou Zhang <kepbod@gmail.com> and other contributors. Thanks!']
-    if has('gui_running')
-        hi StartifyHeader  guifg=#87afff
-        hi StartifyFooter  guifg=#87afff
-        hi StartifyBracket guifg=#585858
-        hi StartifyNumber  guifg=#ffaf5f
-        hi StartifyPath    guifg=#8a8a8a
-        hi StartifySlash   guifg=#585858
-    else
-        hi StartifyHeader  ctermfg=111
-        hi StartifyFooter  ctermfg=111
-        hi StartifyBracket ctermfg=240
-        hi StartifyNumber  ctermfg=215
-        hi StartifyPath    ctermfg=245
-        hi StartifySlash   ctermfg=240
-    endif
-
-    " -> Goyo & Limelight
-    autocmd! User GoyoEnter Limelight
-    autocmd! User GoyoLeave Limelight!
-
-endif
-
 " Setting for enhancement plugins
 if count(g:ivim_bundle_groups, 'enhance')
 
@@ -630,9 +454,6 @@ if count(g:ivim_bundle_groups, 'enhance')
     " -> Investigate.vim
     nnoremap K :call investigate#Investigate()<CR>
     let g:investigate_use_dash=1
-
-    " -> EnhancedDiff
-    let &diffexpr='EnhancedDiff#Diff("git diff", "--diff-algorithm=patience")'
 
 endif
 
@@ -745,7 +566,6 @@ if count(g:ivim_bundle_groups, 'complete')
     " Setting info for snips
     let g:snips_author=g:ivim_user
     let g:snips_email=g:ivim_email
-    let g:snips_github=g:ivim_github
 
 endif
 
@@ -757,21 +577,11 @@ if count(g:ivim_bundle_groups, 'compile')
     let g:syntastic_aggregate_errors=1
     let g:syntastic_auto_jump=1
     let g:syntastic_auto_loc_list=1
-    if g:ivim_fancy_font
-        let g:syntastic_error_symbol = '✗'
-        let g:syntastic_style_error_symbol = '✠'
-        let g:syntastic_warning_symbol = '∆'
-        let g:syntastic_style_warning_symbol = '≈'
-    endif
 
     " -> Singlecompile
     nnoremap <Leader>r :SingleCompileRun<CR>
     let g:SingleCompile_showquickfixiferror=1
 
-endif
-
-" Setting for git plugins
-if count(g:ivim_bundle_groups, 'git')
 endif
 
 " Setting for language specificity
