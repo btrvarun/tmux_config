@@ -66,7 +66,6 @@ autocmd BufWritePost $MYVIMRC source $MYVIMRC
 nnoremap <Leader>x :tabedit $MYVIMRC<CR>
 
 set autoread " Set autoread when a file is changed outside
-set autowrite " Write on make/shell commands
 set hidden " Turn on hidden"
 
 set history=1000 " Increase the lines of history
@@ -104,9 +103,6 @@ function! InitializeDirectories()
     endfor
 endfunction
 call InitializeDirectories()
-
-autocmd BufWinLeave *.* silent! mkview " Make Vim save view (state) (folds, cursor, etc)
-autocmd BufWinEnter *.* silent! loadview " Make Vim load view (state) (folds, cursor, etc)
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -235,10 +231,6 @@ call plug#end()
 let g:gruvbox_invert_tabline=1
 
 " Only have cursorline in current window and in normal window
-autocmd WinLeave * set nocursorline
-autocmd WinEnter * set cursorline
-autocmd InsertEnter * set nocursorline
-autocmd InsertLeave * set cursorline
 set wildmenu " Show list instead of just completing
 set wildmode=list:longest,full " Use powerful wildmenu
 set shortmess=at " Avoids hit enter
