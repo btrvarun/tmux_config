@@ -133,7 +133,6 @@ endif
 call plug#begin('~/.vim/bundle')
 
 if count(g:ivim_bundle_groups, 'ui') " UI setting
-    Plug 'morhetz/gruvbox' " Colorscheme gruvbox
     Plug 'Yggdroot/indentLine' " Indentation level
     Plug 'bling/vim-bufferline' " Buffer line
     Plug 'mhinz/vim-startify' " Start page
@@ -227,9 +226,6 @@ call plug#end()
 " => User Interface
 "-------------------------------------------------
 
-" Set tabline colorscheme
-let g:gruvbox_invert_tabline=1
-
 " Only have cursorline in current window and in normal window
 set wildmenu " Show list instead of just completing
 set wildmode=list:longest,full " Use powerful wildmenu
@@ -264,10 +260,6 @@ set textwidth=80 " Change text width
 "-------------------------------------------------
 
 syntax on " Enable syntax
-set background=dark " Set background
-
-" Load a colorscheme
-colorscheme gruvbox
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
