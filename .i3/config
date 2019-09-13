@@ -58,6 +58,7 @@ bindsym $mod+Ctrl+m exec terminal -e 'alsamixer'
 bindsym $mod+Ctrl+b exec terminal -e 'bmenu'
 bindsym $mod+F2 exec firefox-developer-edition
 bindsym Ctrl+Mod1+b exec firefox
+bindsym Ctrl+Mod1+w exec atom
 bindsym Ctrl+Mod1+e exec thunderbird
 bindsym Ctrl+Mod1+d exec slack
 bindsym $mod+F3 exec pcmanfm
@@ -271,7 +272,7 @@ mode "resize" {
 }
 
 # Lock screen
-bindsym $mod+9 exec --no-startup-id blurlock
+bindsym $mod+9 exec --no-startup-id i3lock -i /home/varun/Pictures/lock/horde.png
 
 # Autostart applications
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
@@ -285,7 +286,7 @@ exec --no-startup-id clipit
 # exec_always --no-startup-id sbxkb
 exec --no-startup-id start_conky_maia
 # exec --no-startup-id start_conky_green
-exec --no-startup-id xautolock -time 10 -locker blurlock
+exec --no-startup-id xautolock -time 10 -locker i3lock -i /home/varun/Pictures/lock/horde.png
 exec_always --no-startup-id ff-theme-util
 exec_always --no-startup-id fix_xcursor
 
