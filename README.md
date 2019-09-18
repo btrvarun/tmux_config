@@ -1,5 +1,9 @@
-# Tmux config
+# Configurations for linux
 My tmux, vim, i3 and alacritty configuration
+
+### Screenshot
+
+![Configuration Screenshot](/images/screenshot.png?raw=true "Configuration screenshot")
 
 ### Installation
 
