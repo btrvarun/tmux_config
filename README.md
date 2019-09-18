@@ -1,5 +1,5 @@
 # Tmux config
-My tmux configuration
+My tmux, vim, i3 and alacritty configuration
 
 ### Installation
 
