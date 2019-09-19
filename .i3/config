@@ -272,7 +272,7 @@ mode "resize" {
 }
 
 # Lock screen
-bindsym $mod+9 exec --no-startup-id i3lock -i /Pictures/lock/horde.png
+bindsym $mod+9 exec --no-startup-id i3lock -i ~/Pictures/lock/horde.png
 
 # Autostart applications
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
@@ -288,7 +288,7 @@ exec --no-startup-id nm-applet
 # exec_always --no-startup-id sbxkb
 exec --no-startup-id start_conky_maia
 # exec --no-startup-id start_conky_green
-exec --no-startup-id xautolock -time 10 -locker i3lock -i /Pictures/lock/horde.png
+exec --no-startup-id xautolock -time 10 -locker i3lock -i ~/Pictures/lock/horde.png
 exec_always --no-startup-id ff-theme-util
 exec_always --no-startup-id fix_xcursor
 
