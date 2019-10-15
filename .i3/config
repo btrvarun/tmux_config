@@ -342,24 +342,19 @@ bar {
 #   font xft:URWGothic-Book 11
 	strip_workspace_numbers yes
 
-#    colors {
-#        background #222D31
-#        statusline #F9FAF9
-#        separator  #454947
+    colors {
+        background #222D31
+        statusline #F9FAF9
+        separator  #454947
 
 #                      border  backgr. text
-#        focused_workspace  #F9FAF9 #16A085 #292F34
-#        active_workspace   #595B5B #353836 #FDF6E3
-#        inactive_workspace #595B5B #222D31 #EEE8D5
-#        binding_mode       #16A085 #2C2C2C #F9FAF9
-#        urgent_workspace   #16A085 #FDF6E3 #E5201D
+        focused_workspace  #595B5B #222D31 #D19A66
+        active_workspace   #595B5B #353836 #FDF6E3
+        inactive_workspace #595B5B #222D31 #EEE8D5
+        binding_mode       #595B5B #2C2C2C #F9FAF9
+        urgent_workspace   #595B5B #222D31 #E06C75
 
-#	focused_workspace #EAD49B #1E272B #EAD49B 
-#	active_workspace #EAD49B #1E272B #EAD49B
-#	inactive_workspace #EAD49B #1E272B #EAD49B
-#	binding_workspace #EAD49B #1E272B #EAD49B 
-#	urgent_workspace #EAD49B #1E272B #EAD49B 
-#   }
+   }
 }
 
 # hide/unhide i3status bar
@@ -375,15 +370,6 @@ client.placeholder #EAD49B #1E272B #EAD49B #78824B #78824B
 
 
 client.background #1d1e26
-
-# default manjaro theme
-#  client.focused          #556064 #556064 #80FFF9 #FDF6E3
-#  client.focused_inactive #2F3D44 #2F3D44 #1ABC9C #454948
-#  client.unfocused        #2F3D44 #2F3D44 #1ABC9C #454948
-#  client.urgent           #CB4B16 #FDF6E3 #1ABC9C #268BD2
-#  client.placeholder      #000000 #0c0c0c #ffffff #000000 
-
-#  client.background       #2B2C2B
 
 #############################
 ### settings for i3-gaps: ###
