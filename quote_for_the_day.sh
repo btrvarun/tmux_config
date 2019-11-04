@@ -32,3 +32,6 @@ fi
 if [ $rand_number -eq 9 ]; then
     echo "Have some water, get some food, We good now"
 fi
+if [$rand_number -eq 10]; then
+    echo "Darkness shall never tame us"
+fi
