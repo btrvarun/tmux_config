@@ -37,11 +37,9 @@ let g:ivim_user='Varun' " User name
 let g:ivim_email='btr.varun93@gmail.com' " User email
 " ivim ui setting
 let g:ivim_show_number=1 " Enable showing number
-" ivim autocomplete setting (YCM or NEO)
-let g:ivim_autocomplete='NEO'
 " ivim plugin setting
 let g:ivim_bundle_groups=['ui', 'enhance', 'move', 'navigate',
-            \'complete', 'compile', 'language']
+            \ 'compile', 'language']
 
 " Customise ivim settings for personal usage
 if filereadable(expand($HOME . '/.vimrc.ivim.local'))
@@ -176,28 +174,6 @@ if count(g:ivim_bundle_groups, 'navigate') " Navigation
     Plug 'mhinz/vim-tmuxify' " Tmux panes
     Plug 'gmarik/Vundle.vim' " Vundle
     Plug 'christoomey/vim-tmux-navigator' " Make navigation between tmux and vim easier
-endif
-
-if count(g:ivim_bundle_groups, 'complete') " Completion
-    if g:ivim_autocomplete=='NEO'
-        if has('lua')
-            let g:ivim_completion_engine='neocomplete'
-            Plug 'Shougo/neocomplete.vim' " Auto completion framework
-        else
-            let g:ivim_completion_engine='neocomplcache'
-            Plug 'Shougo/neocomplcache.vim' " Auto completion framework
-        endif
-        Plug 'Shougo/neosnippet.vim' " Snippet engine
-        Plug 'Shougo/neosnippet-snippets' " Snippets
-        Plug 'Shougo/vimproc.vim', { 'do': 'make' }
-        Plug 'wellle/tmux-complete.vim' " Completion for tmux panes
-    else
-        " Auto completion framework
-        let g:ivim_completion_engine='YouCompleteMe'
-        Plug 'Valloric/YouCompleteMe', { 'do': './install.py' } "Auto completion framework
-        Plug 'honza/vim-snippets' " Snippets
-        Plug 'sirver/ultisnips' " Snippet engine
-    endif
 endif
 
 if count(g:ivim_bundle_groups, 'compile') " Compiling
@@ -401,26 +377,6 @@ if count(g:ivim_bundle_groups, 'enhance')
     endfunction
     nnoremap <silent> <LocalLeader><Space> :call IsWhiteLine()<CR>
 
-    " -> Multiple cursors
-    " Called once right before you start selecting multiple cursors
-    if g:ivim_autocomplete=='NEO'
-        function! Multiple_cursors_before()
-            if g:ivim_completion_engine=='neocomplete'
-                exe 'NeoCompleteLock'
-            else
-                exe 'NeoComplCacheLock'
-            endif
-        endfunction
-        " Called once only when the multiple selection is canceled (default <Esc>)
-        function! Multiple_cursors_after()
-            if g:ivim_completion_engine=='neocomplete'
-                exe 'NeoCompleteUnlock'
-            else
-                exe 'NeoComplCacheUnlock'
-            endif
-        endfunction
-    endif
-
     " -> Undo tree
     nnoremap <Leader>u :UndotreeToggle<CR>
     let g:undotree_SetFocusWhenToggle=1
@@ -481,77 +437,6 @@ if count(g:ivim_bundle_groups, 'navigate')
 
 endif
 
-" Setting for completion plugins
-if count(g:ivim_bundle_groups, 'complete')
-
-    if g:ivim_autocomplete=='NEO'
-        " -> Neocomplete & Neocomplcache
-        " Use Tab and S-Tab to select candidate
-        inoremap <expr><Tab>  pumvisible() ? "\<C-N>" : "\<Tab>"
-        inoremap <expr><S-Tab> pumvisible() ? "\<C-P>" : "\<S-Tab>"
-        if g:ivim_completion_engine=='neocomplete'
-            let g:neocomplete#enable_at_startup=1
-            let g:neocomplete#data_directory=$HOME . '/.vim/cache/neocomplete'
-            let g:neocomplete#enable_auto_delimiter=1
-            " Use <C-E> to close popup
-            inoremap <expr><C-E> neocomplete#cancel_popup()
-            inoremap <expr><CR> delimitMate#WithinEmptyPair() ?
-                        \ "\<C-R>=delimitMate#ExpandReturn()\<CR>" :
-                        \ pumvisible() ? neocomplete#close_popup() : "\<CR>"
-        else
-            let g:neocomplcache_enable_at_startup=1
-            let g:neocomplcache_temporary_dir=$HOME . '/.vim/cache/neocomplcache'
-            let g:neocomplcache_enable_auto_delimiter=1
-            let g:neocomplcache_enable_fuzzy_completion=1
-            " Use <C-E> to close popup
-            inoremap <expr><C-E> neocomplcache#cancel_popup()
-            inoremap <expr><CR> delimitMate#WithinEmptyPair() ?
-                        \ "\<C-R>=delimitMate#ExpandReturn()\<CR>" :
-                        \ pumvisible() ? neocomplcache#close_popup() : "\<CR>"
-        endif
-        " Setting for specific language
-        if has('lua')
-            if !exists('g:neocomplete#force_omni_input_patterns')
-                let g:neocomplete#force_omni_input_patterns={}
-            endif
-            let g:neocomplete#force_omni_input_patterns.python=
-            \ '\%([^. \t]\.\|^\s*@\|^\s*from\s.\+import \|^\s*from \|^\s*import \)\w*'
-        else
-            if !exists('g:neocomplcache_force_omni_patterns')
-                let g:neocomplcache_force_omni_patterns={}
-            endif
-            let g:neocomplcache_force_omni_patterns.python=
-            \ '\%([^. \t]\.\|^\s*@\|^\s*from\s.\+import \|^\s*from \|^\s*import \)\w*'
-        endif
-        autocmd FileType python setlocal omnifunc=jedi#completions
-        let g:jedi#completions_enabled=0
-        let g:jedi#auto_vim_configuration=0
-        let g:jedi#smart_auto_mappings=0
-        let g:jedi#use_tabs_not_buffers=1
-        let g:tmuxcomplete#trigger=''
-        " -> Neosnippet
-        " Set information for snippets
-        let g:neosnippet#enable_snipmate_compatibility=1
-        " Use <C-K> to expand or jump snippets in insert mode
-        imap <C-K> <Plug>(neosnippet_expand_or_jump)
-        " Use <C-K> to replace TARGET within snippets in visual mode
-        xmap <C-K> <Plug>(neosnippet_start_unite_snippet_target)
-        " For snippet_complete marker
-        if has('conceal')
-            set conceallevel=2 concealcursor=i
-        endif
-    else
-        " -> UltiSnips
-        let g:UltiSnipsExpandTrigger="<C-K>"
-        let g:UltiSnipsJumpForwardTrigger="<Tab>"
-        let g:UltiSnipsJumpBackwardTrigger="<S-Tab>"
-    endif
-
-    " Setting info for snips
-    let g:snips_author=g:ivim_user
-    let g:snips_email=g:ivim_email
-
-endif
 
 " Setting for compiling plugins
 if count(g:ivim_bundle_groups, 'compile')
