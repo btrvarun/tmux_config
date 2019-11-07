@@ -59,7 +59,6 @@ bindsym $mod+Ctrl+m exec terminal -e 'alsamixer'
 bindsym $mod+Ctrl+b exec terminal -e 'bmenu'
 bindsym $mod+F2 exec firefox-developer-edition
 bindsym Ctrl+Mod1+b exec firefox
-bindsym Ctrl+Mod1+w exec atom
 bindsym Ctrl+Mod1+e exec thunderbird
 bindsym Ctrl+Mod1+d exec slack
 bindsym $mod+F3 exec pcmanfm
