@@ -235,6 +235,9 @@ set textwidth=80 " Change text width
 " => Colors and Fonts
 "-------------------------------------------------
 
+colorscheme desert
+set background=dark
+
 syntax on " Enable syntax
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

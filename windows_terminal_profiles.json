@@ -1,0 +1,99 @@
+
+// To view the default settings, hold "alt" while clicking on the "Settings" button.
+// For documentation on these settings, see: https://aka.ms/terminal-documentation
+
+{
+    "$schema": "https://aka.ms/terminal-profiles-schema",
+
+    "defaultProfile": "{14ad203f-52cc-4110-90d6-d96e0f41b64d}",
+
+    "profiles":
+    [
+            {
+                // Make changes here to the powershell.exe profile
+                "guid": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
+                "name": "Windows PowerShell",
+                "commandline": "powershell.exe",
+                "hidden": false
+            },
+            {
+                // Make changes here to the cmd.exe profile
+                "guid": "{0caa0dad-35be-5f56-a8ff-afceeeaa6101}",
+                "name": "cmd",
+                "commandline": "cmd.exe",
+                "hidden": false
+            },
+            {
+                "guid": "{b453ae62-4e3d-5e58-b989-0a998ec441b8}",
+                "hidden": false,
+                "name": "Azure Cloud Shell",
+                "source": "Windows.Terminal.Azure"
+            },
+            {
+                "guid": "{2c4de342-38b7-51cf-b940-2309a097f518}",
+                "hidden": false,
+                "name": "Ubuntu",
+                "source": "Windows.Terminal.Wsl"
+            },
+            { 
+                "guid" : "{14ad203f-52cc-4110-90d6-d96e0f41b64d}",
+                "fontFace": "Cascadia Code",
+                "colorScheme": "Default Dark",
+                "hidden": false,
+                "name": "Bash",
+                "icon" : "%PROGRAMFILES%\\Git\\mingw64\\share\\git\\git-for-windows.ico", 
+                "commandline" : "C:/Program Files/Git/bin/bash.exe --login", 
+                "startingDirectory" : "%USERPROFILE%"
+            }
+        ],
+
+    // Add custom color schemes to this array
+    "schemes": [    
+            {
+                "background": "#1e2127",
+                "foreground": "#abb2bf",
+                "name": "One Dark",
+                "black":   "#1e2127",
+                "red":     "#e06c75",
+                "green":   "#98c379",
+                "yellow":  "#d19a66",
+                "blue":    "#61afef",
+                "purple": "#c678dd",
+                "cyan":    "#56b6c2",
+                "white":   "#abb2bf"
+            },
+            {
+                "background": "#181818",
+                "foreground": "#d8d8d8",
+                "name": "Default Dark",
+                "black":   "#181818",
+                "red":     "#ab4642",
+                "green":   "#a1b56c",
+                "yellow":  "#f7ca88",
+                "blue":    "#7cafc2",
+                "purple": "#ba8baf",
+                "cyan":    "#86c1b9",
+                "white":   "#d8d8d8"
+            }
+        ],
+
+    // Add any keybinding overrides to this array.
+    // To unbind a default keybinding, set the command to "unbound"
+    "keybindings": [
+            {
+                "command" : "closeTab",
+                "keys" : 
+                [
+                            "ctrl+w"
+                            ]
+                    },
+                            {
+                                        "command" : "newTab",
+                                        "keys" : 
+                                        [
+                                                    "ctrl+n"
+                                                    ]
+                                    }
+                                        ]
+}
+
