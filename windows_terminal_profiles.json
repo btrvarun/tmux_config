@@ -13,7 +13,7 @@
             // Make changes here to the powershell.exe profile
             "guid": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
             "fontFace": "Cascadia Code",
-            "colorScheme": "Default Dark",
+            "fontSize": 10,
             "name": "Windows PowerShell",
             "commandline": "powershell.exe",
             "hidden": false
@@ -22,6 +22,7 @@
             // Make changes here to the cmd.exe profile
             "guid": "{0caa0dad-35be-5f56-a8ff-afceeeaa6101}",
             "fontFace": "Cascadia Code",
+            "fontSize": 10,
             "colorScheme": "Default Dark",
             "name": "cmd",
             "commandline": "cmd.exe",
@@ -30,6 +31,7 @@
         {
             "guid": "{b453ae62-4e3d-5e58-b989-0a998ec441b8}",
             "fontFace": "Cascadia Code",
+            "fontSize": 10,
             "colorScheme": "Default Dark",
             "hidden": false,
             "name": "Azure Cloud Shell",
@@ -38,6 +40,7 @@
         {
             "guid": "{2c4de342-38b7-51cf-b940-2309a097f518}",
             "fontFace": "Cascadia Code",
+            "fontSize": 10,
             "colorScheme": "Default Dark",
             "hidden": false,
             "name": "Ubuntu",
@@ -46,6 +49,7 @@
         { 
             "guid" : "{14ad203f-52cc-4110-90d6-d96e0f41b64d}",
             "fontFace": "Cascadia Code",
+            "fontSize": 10,
             "colorScheme": "Default Dark",
             "hidden": false,
             "name": "Bash",
