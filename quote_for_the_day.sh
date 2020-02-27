@@ -15,7 +15,7 @@ if [ $rand_number -eq 3 ]; then
     echo "Calm down, take a breather"
 fi
 if [ $rand_number -eq 4 ]; then
-    echo "Coffee, dear boy?"
+    echo "Chocy, dear boy?"
 fi
 if [ $rand_number -eq 5 ]; then
     echo "It's alright, you did good today"
