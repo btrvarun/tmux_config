@@ -16,6 +16,9 @@ tweaks from my side
 git clone --recurse-submodule https://github.com/btrvarun/tmux_config.git ~/.tmux/
 ln -s ~/.tmux/.tmux.conf ~/.tmux.conf
 ln -s ~/.tmux/.vimrc ~/.vimrc
+rm ~/.bashrc
+ln -s ~/.tmux/.bashrc ~/.bashrc
+sudo ln -s ~/.tmux/.bashrc.root /root/.bashrc
 
 # debian:
 sudo apt install tmux vim
