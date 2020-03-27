@@ -2,16 +2,6 @@
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
 
-# Pacman auto-complete
-if [ -f /etc/bash_completion ]; then
-    /etc/bash_completion
-fi
-
-# TMUX scripting
-if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
-  exec tmux
-fi
-
 # If not running interactively, don't do anything
 case $- in
     *i*) ;;
@@ -126,6 +116,11 @@ if ! shopt -oq posix; then
   fi
 fi
 
+# TMUX scripting
+if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
+  exec tmux
+fi
+
 # To activate virtual environment if present
 if [[ -d "venv" ]]; then
 	source venv/bin/activate
@@ -139,3 +134,4 @@ if [ -f '/home/varun/Projects/python/numeric/google-cloud-sdk/path.bash.inc' ]; 
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/home/varun/Projects/python/numeric/google-cloud-sdk/completion.bash.inc' ]; then . '/home/varun/Projects/python/numeric/google-cloud-sdk/completion.bash.inc'; fi
+
