@@ -517,5 +517,5 @@ endif
 "---------------------------------------------------------------
 
 set mouse=a " Set mouse mode on
-set clipboard=unnamed " Syncing clipboard
+" set clipboard=unnamed " Syncing clipboard
 set pastetoggle=<leader>p " Toggle paste mode
